@@ -1,5 +1,4 @@
 import { makeAutoObservable } from "mobx"
-import ts from "typescript";
 
 interface Modal {
     open: boolean;
