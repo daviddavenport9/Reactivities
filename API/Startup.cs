@@ -68,12 +68,12 @@ namespace API
             app.UseXfo(opt => opt.Deny());
             app.UseCsp(opt => opt
                     .BlockAllMixedContent()
-                    .StyleSources(s => s.Self().CustomSources("https://fonts.googleapis.com", "https://cdn.jsdelivr.net"))
+                    .StyleSources(s => s.Self().CustomSources("https://fonts.googleapis.com", "https://cdn.jsdelivr.net", "sha256-yChqzBduCCi4o4xdbXRXh4U/t1rP4UUUMJt+rB+ylUI=", "sha256-yChqzBduCCi4o4xdbXRXh4U/t1rP4UUUMJt+rB+ylUI=", "sha256-ychqzbducci4o4xdbxrxh4u/t1rP4UUUMJt+rB+ylUI="))
                     .FontSources(s => s.Self().CustomSources("https://fonts.gstatic.com", "data:", "https://cdn.jsdelivr.net"))
                     .FormActions(s => s.Self())
                     .FrameAncestors(s => s.Self())
-                    .ImageSources(s => s.Self().CustomSources("https://res.cloudinary.com", "blob:"))
-                    .ScriptSources(s => s.Self().CustomSources("https://cdn.jsdelivr.net", "sha256-vpD4kayiUYOTFvnTWYCDknM5I3Nd2XUzIKx9+q6BNu0=", "sha256-Tui7QoFlnLXkJCSl1/JvEZdIXTmBttnWNxzJpXomQjg=", "sha256-wkAU1AW/h8YFx0XlzvpTllAKnFEO2tw8aKErs5a26LY=" ))
+                    .ImageSources(s => s.Self().CustomSources("https://res.cloudinary.com", "blob:", "data:", "https://platform-lookaside.fbsbx.com", "https://www.facebook.com", "https://platform-lookaside.fbsbx.com/platform/profilepic"))
+                    .ScriptSources(s => s.Self().CustomSources("https://cdn.jsdelivr.net", "https://connect.facebook.net", "sha256-vpD4kayiUYOTFvnTWYCDknM5I3Nd2XUzIKx9+q6BNu0=", "sha256-Tui7QoFlnLXkJCSl1/JvEZdIXTmBttnWNxzJpXomQjg=", "sha256-wkAU1AW/h8YFx0XlzvpTllAKnFEO2tw8aKErs5a26LY=", "sha256-4iPtdynhLxbYbNSd/t4roPFW/ZkvoXk6d7bLTFgTNaI="))
                 );
 
             if (env.IsDevelopment())
@@ -82,8 +82,9 @@ namespace API
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "WebAPIv5 v1"));
             }
-            else {
-                app.Use(async (context, next) => 
+            else
+            {
+                app.Use(async (context, next) =>
                 {
                     context.Response.Headers.Add("Strict-Transport-Security", "max-age=31536000");
                     await next.Invoke();
