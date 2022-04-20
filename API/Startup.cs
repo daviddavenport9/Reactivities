@@ -72,7 +72,7 @@ namespace API
                     .FontSources(s => s.Self().CustomSources("https://fonts.gstatic.com", "data:", "https://cdn.jsdelivr.net"))
                     .FormActions(s => s.Self())
                     .FrameAncestors(s => s.Self())
-                    .ImageSources(s => s.Self().CustomSources("https://res.cloudinary.com", "blob:", "data:", "https://platform-lookaside.fbsbx.com", "https://www.facebook.com", "https://platform-lookaside.fbsbx.com/platform/profilepic"))
+                    .ImageSources(s => s.Self().CustomSources("https://res.cloudinary.com", "blob:", "data:", "https://platform-lookaside.fbsbx.com", "https://www.facebook.com", "https://platform-lookaside.fbsbx.com/platform/profilepic", "https://scontent-iad3-1.xx.fbcdn.net"))
                     .ScriptSources(s => s.Self().CustomSources("https://cdn.jsdelivr.net", "https://connect.facebook.net", "sha256-vpD4kayiUYOTFvnTWYCDknM5I3Nd2XUzIKx9+q6BNu0=", "sha256-Tui7QoFlnLXkJCSl1/JvEZdIXTmBttnWNxzJpXomQjg=", "sha256-wkAU1AW/h8YFx0XlzvpTllAKnFEO2tw8aKErs5a26LY=", "sha256-4iPtdynhLxbYbNSd/t4roPFW/ZkvoXk6d7bLTFgTNaI="))
                 );
 
