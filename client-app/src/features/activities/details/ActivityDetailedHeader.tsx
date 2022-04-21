@@ -1,8 +1,8 @@
 import { observer } from "mobx-react-lite";
 import React from "react";
+import { Link } from "react-router-dom";
 import { Button, Header, Item, Segment, Image, Label } from "semantic-ui-react";
 import { Activity } from "../../../app/models/activity";
-import { Link } from "react-router-dom";
 import { format } from "date-fns";
 import { useStore } from "../../../app/stores/store";
 
@@ -32,7 +32,7 @@ export default observer(function ActivityDetailedHeader({ activity }: Props) {
       <Segment basic attached="top" style={{ padding: "0" }}>
         {activity.isCancelled && (
           <Label
-            style={{ position: "absoulute", zIndex: 1000, left: -14, top: 20 }}
+            style={{ position: "absolute", zIndex: 1000, left: -14, top: 20 }}
             ribbon
             color="red"
             content="Cancelled"
@@ -75,7 +75,7 @@ export default observer(function ActivityDetailedHeader({ activity }: Props) {
               basic
               content={
                 activity.isCancelled
-                  ? "Re-activate activity"
+                  ? "Re-activate Activity"
                   : "Cancel Activity"
               }
               onClick={cancelActivityToggle}
@@ -92,11 +92,16 @@ export default observer(function ActivityDetailedHeader({ activity }: Props) {
             </Button>
           </>
         ) : activity.isGoing ? (
-          <Button onClick={updateAttendance} loading={loading}>
+          <Button loading={loading} onClick={updateAttendance}>
             Cancel attendance
           </Button>
         ) : (
-          <Button color="teal" onClick={updateAttendance} loading={loading} disabled={activity.isCancelled}>
+          <Button
+            disabled={activity.isCancelled}
+            loading={loading}
+            onClick={updateAttendance}
+            color="teal"
+          >
             Join Activity
           </Button>
         )}
